@@ -2,8 +2,12 @@ import pandas as pd
 from sklearn.model_selection import train_test_split #to split the data into training and testing sets
 from sklearn.tree import DecisionTreeClassifier #to create a decision tree model for classification
 from sklearn.metrics import accuracy_score #to evaluate the accuracy of the model by comparing the predicted labels with the true labels
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix #to evaluate the performance of a classification model by comparing the predicted labels with the true labels and summarizing the results in a matrix format
+from sklearn.metrics import classification_report #to evaluate the performance of a classification model by providing a detailed report that includes precision, recall, F1-score, and support for each class in the dataset
+import matplotlib.pyplot as plt #to create visualizations and plots for data analysis and model evaluation
+import seaborn as sns #to create visualizations and plots for data analysis and model evaluation
+
+
 
 df=pd.read_csv("Student_performance_data _.csv") #to read the dataset from a CSV file and store it in a DataFrame called df
 
@@ -35,3 +39,13 @@ print("Predictions:", y_pred)   #print the predicted labels for the test set
 print(confusion_matrix(Y_test, y_pred))
 
 print(classification_report(Y_test, y_pred))
+
+
+accuracy_percent = accuracy * 100
+
+plt.bar(["Decision Tree"], [accuracy_percent])  #the bar chart will have one bar representing the accuracy of the Decision Tree model
+
+plt.title("Model Accuracy") #display the title of the plot
+plt.ylabel("Accuracy (%)") #display the label for the y-axis
+
+plt.show()#i have one bar in the chart
