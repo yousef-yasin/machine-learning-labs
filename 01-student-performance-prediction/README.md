@@ -114,6 +114,3 @@ Example Metrics:
 
 Yousef Yasin
 
-Software Engineering Student
-
-Interested in Artificial Intelligence, Machine Learning, Computer Vision, and Data Science.
