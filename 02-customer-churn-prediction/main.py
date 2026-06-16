@@ -4,7 +4,9 @@ from sklearn.model_selection import train_test_split #to split the data into tra
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix #to evaluate the performance of the model by comparing the predicted labels with the true labels and summarizing the results in a matrix format
 from sklearn.ensemble import RandomForestClassifier
-
+from seaborn import heatmap #to create a heatmap visualization of the confusion matrix
+import matplotlib.pyplot as plt
+import seaborn as sns #to create visualizations and plots for data analysis and model evaluation
 
 df = pd.read_csv("Telco-Customer-Churn.csv")
 
@@ -71,3 +73,11 @@ print("Random Forest Accuracy:",rf_accuracy)
 print(confusion_matrix(y_test,rf_pred))
 
 print(classification_report(y_test,rf_pred))
+
+ht= confusion_matrix(y_test,rf_pred) #to create a confusion matrix for the random forest model by comparing the predicted labels with the true labels in the test set and summarizing the results in a matrix format
+plt.figure(figsize=(8,6)) #to create a new figure with a specified size of 8 inches by 6 inches for the heatmap visualization
+sns.heatmap(ht, annot=True, fmt="d", cmap="Blues") #to create a heatmap visualization of the confusion matrix
+plt.title("Random Forest Confusion Matrix") #to set the title of the heatmap visualization to "Random Forest Confusion Matrix"
+plt.xlabel("Predicted Labels") #to set the label for the x-axis of the heatmap visualization to "Predicted Labels"
+plt.ylabel("True Labels") #to set the label for the y-axis of the heatmap visualization to "True Labels"
+plt.show() #to display the heatmap visualization of the confusion matrix for the random forest model
