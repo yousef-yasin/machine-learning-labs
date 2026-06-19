@@ -4,7 +4,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score #to evaluate the accuracy of the model by comparing the predicted labels with the true labels
 from sklearn.metrics import confusion_matrix ,classification_report #to evaluate the performance of a classification model by comparing the predicted
 from sklearn.ensemble import RandomForestClassifier
-
+import matplotlib.pyplot as plt #to create visualizations and plots for data analysis and model evaluation
+import seaborn as sns #to create visualizations and plots for data analysis and model evaluation
 
 df = pd.read_csv('heart.csv')#to read the dataset from a CSV file and store it in a DataFrame called df
 
@@ -40,3 +41,8 @@ print("Random Forest Accuracy:", accuracy_rf)
 print("Random Forest Predictions:", y_pred_rf)
 print(confusion_matrix(Y_test, y_pred_rf))
 print(classification_report(Y_test, y_pred_rf))
+
+plt.bar(["Logistic Regression", "Random Forest"], [accuracy * 100, accuracy_rf * 100])#to create a bar chart that compares the accuracy of the logistic regression model and the random forest classifier model, where the x-axis represents the model names and the y-axis represents the accuracy percentage
+plt.title("Model Accuracy")#to set the title of the bar chart to "Model Accuracy
+plt.ylabel("Accuracy (%)")#to set the label of the y-axis to "Accuracy (%)"
+plt.show()#to display the bar chart
