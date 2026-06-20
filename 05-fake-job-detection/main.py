@@ -90,3 +90,14 @@ if prediction[0] == 1:
     print("Fake Job")
 else:
     print("Real Job")
+
+
+plt.figure(figsize=(10,6))
+sns.barplot(
+    x=["Logistic Regression", "Random Forest"],
+    y=[accuracy * 100, rf_accuracy * 100]
+)
+plt.title("Model Accuracy Comparison")
+plt.ylabel("Accuracy (%)")
+plt.xlabel("Model")
+plt.show()
