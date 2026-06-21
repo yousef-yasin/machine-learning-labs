@@ -5,6 +5,8 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder
+from sklearn.ensemble import RandomForestRegressor
+
 
 df = pd.read_csv('data.csv')
 
@@ -44,3 +46,10 @@ r2 = r2_score(y_test, y_pred) #the coefficient of determination, which is a meas
 print("Mean Absolute Error:", mae)
 print("Mean Squared Error:", mse)
 print("R-squared:", r2)
+
+rf=RandomForestRegressor(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+y_pred_rf = rf.predict(X_test)
+print("Random Forest Mean Absolute Error:", mean_absolute_error(y_test, y_pred_rf))
+print("Random Forest Mean Squared Error:", mean_squared_error(y_test, y_pred_rf))
+print("Random Forest R-squared:", r2_score(y_test, y_pred_rf))
